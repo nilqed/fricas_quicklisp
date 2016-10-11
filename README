@@ -5,7 +5,7 @@
 Requires: QuickLisp (https://www.quicklisp.org/beta/)
 
 
-Documentation: http://nilqed.github.io/fricas_quicklisp
+Documentation: http://nilqed.github.io/fricas_quicklisp/
 
 
 Exported functions:
