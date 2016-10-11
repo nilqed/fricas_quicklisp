@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Quicklisp &amp; FriCAS &mdash; FriCAS &amp; QuickLisp 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FriCAS &amp; QuickLisp 1.0.0 documentation" href="index.html" />
+    <link rel="next" title="Sample Installation" href="appendix-1.html" />
+    <link rel="prev" title="FriCAS &amp; QuickLisp" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="appendix-1.html" title="Sample Installation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="FriCAS &amp; QuickLisp"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">FriCAS &amp; QuickLisp 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="quicklisp-fricas">
+<h1>1. Quicklisp &amp; FriCAS<a class="headerlink" href="#quicklisp-fricas" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Quicklisp:</th><td class="field-body"><a class="reference external" href="https://www.quicklisp.org/beta/">homepage</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quicklisp</strong> is a library manager for <em>Common Lisp</em>. It works with your
+existing Common Lisp implementation to download, install, and load any of
+over 1,200 libraries with a few simple commands.</p>
+<p>Quicklisp is easy to install and works with ABCL, Allegro CL, Clasp,
+Clozure CL, CLISP, CMUCL, ECL, LispWorks, MKCL, SBCL, and Scieneer CL,
+on Linux, Mac OS X, and Windows.</p>
+<p><strong>Note</strong></p>
+<blockquote>
+<div><p>If you want QuickLisp to work with <a class="reference external" href="http://fricas.sourceforge.net/">FriCAS</a> you will need one of the
+following Common-Lisp implementations</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.sbcl.org/">SBCL</a> (1.0.7 or later, recommended 1.3.0)</li>
+<li><a class="reference external" href="http://ccl.clozure.com/">CCL</a> (1.1 or later)</li>
+<li><a class="reference external" href="https://common-lisp.net/project/ecl/">ECL</a> (0.9l or later, recommended latest version)</li>
+<li><a class="reference external" href="http://www.clisp.org/">CLISP</a> (2.41 or later)</li>
+</ul>
+</div></blockquote>
+<p>Recommended at the time of writing is <strong>SBCL</strong> v <a class="reference external" href="https://sourceforge.net/projects/sbcl/files/sbcl/1.3.0/">1.3.0</a>.</p>
+</div></blockquote>
+<div class="section" id="installing-a-lisp">
+<h2>1.1 Installing a LISP<a class="headerlink" href="#installing-a-lisp" title="Permalink to this headline">¶</a></h2>
+<p>Download and install one of the implementations according to the instructions
+given on the respective website or in the <cite>README|INSTALL</cite> files within the
+distribution package. For SBCL there is a log of a sample installation in the
+appendix.</p>
+</div>
+<div class="section" id="getting-and-compiling-fricas">
+<h2>1.2 Getting and Compiling FriCAS<a class="headerlink" href="#getting-and-compiling-fricas" title="Permalink to this headline">¶</a></h2>
+<p>Get the latest (stable) <a class="reference external" href="https://sourceforge.net/projects/fricas/files/fricas/1.3.0/fricas-1.3.0-full.tar.bz2/download">source tarball</a> from sourceforge. Do <strong>not</strong> take one
+of the binaries - it won&#8217;t work together with QuickLisp.</p>
+<p>Unpack and compile FriCAS according to the instructions given in the file
+<code class="docutils literal"><span class="pre">INSTALL</span></code>.</p>
+<p>The sources of the development version (at your own risk) can be fetched by
+subversion:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">svn</span> <span class="n">co</span> <span class="n">svn</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">sf</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">p</span><span class="o">/</span><span class="n">fricas</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">trunk</span> <span class="n">fricas</span>
+</pre></div>
+</div>
+<p>or from the mirror on GitHub:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fricas</span><span class="o">/</span><span class="n">fricas</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-quicklisp">
+<h2>1.3 Installing QuickLisp<a class="headerlink" href="#installing-quicklisp" title="Permalink to this headline">¶</a></h2>
+<p>Follow the instructions given on the QuickLisp <a class="reference external" href="https://www.quicklisp.org/beta/">homepage</a>. See also the
+<em>sample installation</em> section in the appendix.</p>
+<p>Quicklisp can also be installed using the freshly compiled FriCAS
+as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Download</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">beta</span><span class="o">.</span><span class="n">quicklisp</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">quicklisp</span><span class="o">.</span><span class="n">lisp</span>
+<span class="n">Start</span> <span class="n">FriCAS</span>
+<span class="p">)</span><span class="n">lisp</span> <span class="p">(</span><span class="n">load</span> <span class="s2">&quot;quicklisp.lisp&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="n">lisp</span> <span class="p">(</span><span class="n">quicklisp</span><span class="o">-</span><span class="n">quickstart</span><span class="p">:</span><span class="n">install</span><span class="p">)</span>
+<span class="p">)</span><span class="n">quit</span>
+</pre></div>
+</div>
+<p>Check if there is a folder <strong>quicklisp</strong> in your home directory.</p>
+<div class="section" id="manually-loading-after-installation">
+<h3>1.3.1 Manually loading after installation<a class="headerlink" href="#manually-loading-after-installation" title="Permalink to this headline">¶</a></h3>
+<p>You only need to install Quicklisp with <code class="docutils literal"><span class="pre">quicklisp.lisp</span></code> once. To load
+Quicklisp into your FriCAS session after the initial installation, load the
+file <code class="docutils literal"><span class="pre">quicklisp/setup.lisp</span></code> with the Common Lisp load function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">)</span><span class="n">lisp</span> <span class="p">(</span><span class="n">load</span> <span class="s2">&quot;~/quicklisp/setup.lisp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-if-it-works">
+<h3>1.3.2 Test if it works<a class="headerlink" href="#test-if-it-works" title="Permalink to this headline">¶</a></h3>
+<p>With the commad <code class="docutils literal"><span class="pre">system-apropos</span></code> we can lookup for online packages:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">)</span><span class="n">lisp</span> <span class="p">(</span><span class="n">load</span> <span class="s2">&quot;~/quicklisp/setup.lisp&quot;</span><span class="p">)</span>
+ <span class="n">Value</span> <span class="o">=</span> <span class="n">T</span>
+
+
+<span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">)</span><span class="n">lisp</span> <span class="p">(</span><span class="n">ql</span><span class="p">:</span><span class="n">system</span><span class="o">-</span><span class="n">apropos</span> <span class="p">:</span><span class="n">snark</span><span class="p">)</span>
+<span class="c1">#&lt;SYSTEM snark / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-agenda / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-auxiliary-packages / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-deque / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-dpll / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-examples / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-feature / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-implementation / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-infix-reader / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-lisp / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-loads / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-numbering / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-pkg / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="c1">#&lt;SYSTEM snark-sparse-array / snark-20160318-git / quicklisp 2016-03-18&gt;</span>
+<span class="n">Value</span> <span class="o">=</span> <span class="n">NIL</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">)</span><span class="n">quit</span>
+</pre></div>
+</div>
+<p>If you wanted to load a library (snark in our example) then you would enter:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">)</span><span class="n">lisp</span> <span class="p">(</span><span class="n">ql</span><span class="p">:</span><span class="n">quickload</span> <span class="p">:</span><span class="n">snark</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>whereby the package name could also be set between quotation marks,
+like &#8220;snark&#8221;.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Quicklisp &amp; FriCAS</a><ul>
+<li><a class="reference internal" href="#installing-a-lisp">1.1 Installing a LISP</a></li>
+<li><a class="reference internal" href="#getting-and-compiling-fricas">1.2 Getting and Compiling FriCAS</a></li>
+<li><a class="reference internal" href="#installing-quicklisp">1.3 Installing QuickLisp</a><ul>
+<li><a class="reference internal" href="#manually-loading-after-installation">1.3.1 Manually loading after installation</a></li>
+<li><a class="reference internal" href="#test-if-it-works">1.3.2 Test if it works</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">FriCAS &amp; QuickLisp</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="appendix-1.html"
+                        title="next chapter">Sample Installation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/section-1.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="appendix-1.html" title="Sample Installation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="FriCAS &amp; QuickLisp"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">FriCAS &amp; QuickLisp 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>
