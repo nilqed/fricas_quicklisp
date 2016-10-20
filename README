@@ -11,7 +11,7 @@ Documentation: http://nilqed.github.io/fricas_quicklisp/
 Exported functions:
 
     quickLoad      : String -> Void   ... ql:quickload
-    qlApropos      : String -> Void   ... ql:apropos
+    qlApropos      : String -> Void   ... ql:system-apropos
     qlUninstall    : String -> Void   ... ql:uninstall
     qlWhoDependsOn : String -> Void   ... ql:who-depends-on
     qlUpdateAll    : ()     -> Void   ... ql:update-all-dists
@@ -20,8 +20,8 @@ Exported functions:
 
     
 QuickLisp Installation: It is assumed that 'quicklisp' is installed in the
-                        home directory. Otherwise you have to change this on
-                        the first line of 'quicklisp.spad' !!
+                        home directory. Otherwise you have to change the path 
+                        on the first line of 'quicklisp.spad' !!
                         
 Compile:
 
