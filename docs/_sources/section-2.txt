@@ -218,7 +218,7 @@ necessary).
 2.3 More Information
 ~~~~~~~~~~~~~~~~~~~~
 The corresponding Lisp commands are described in more detail in `Basic Commands`_
-at the Quicklisp homepage. Not only în case of troubles it is **recommended** to 
+on the Quicklisp homepage. Not only în case of troubles it is **recommended** to 
 consult the `FAQ`_.
 
 Ready and up-to-date documentation for all Common-Lisp projects in Quicklisp
