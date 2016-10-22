@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5. Alternatives &mdash; FriCAS &amp; QuickLisp 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="FriCAS &amp; QuickLisp 1.0.0 documentation" href="index.html" />
+    <link rel="next" title="A.1 Sample Installation" href="appendix-1.html" />
+    <link rel="prev" title="4. SPAD Packages" href="section-4.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="appendix-1.html" title="A.1 Sample Installation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="section-4.html" title="4. SPAD Packages"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">FriCAS &amp; QuickLisp 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="alternatives">
+<h1>5. Alternatives<a class="headerlink" href="#alternatives" title="Permalink to this headline">¶</a></h1>
+<p>If you do not like using a package there are alternate methods to call Quicklisp
+functions from FriCAS.</p>
+<div class="section" id="quickload-in-startup-file">
+<h2>5.1 quickLoad in startup file<a class="headerlink" href="#quickload-in-startup-file" title="Permalink to this headline">¶</a></h2>
+<p>The startup file for FriCAS now is called <code class="docutils literal"><span class="pre">.fricas.input</span></code> and should be
+located in your home directory. If not, you will have to create it. Add
+the code below to this startup file and you may load packages by
+<code class="docutils literal"><span class="pre">quickLoad</span> <span class="pre">&quot;package-name&quot;</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">)</span><span class="nb">set</span> <span class="n">mess</span> <span class="nb">type</span> <span class="n">off</span>
+<span class="n">quickLoad</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">==</span>
+  <span class="n">systemCommand</span><span class="p">(</span><span class="s2">&quot;lisp (load _&quot;</span><span class="o">~/</span><span class="n">quicklisp</span><span class="o">/</span><span class="n">setup_</span><span class="s2">&quot;)&quot;</span><span class="p">)</span>
+  <span class="n">systemCommand</span><span class="p">(</span><span class="n">concat</span> <span class="p">[</span><span class="s2">&quot;lisp (ql::quickload _&quot;&quot;,string p,&quot;</span><span class="n">_</span><span class="s2">&quot;)&quot;</span><span class="p">])</span>
+<span class="p">)</span><span class="nb">set</span> <span class="n">mess</span> <span class="nb">type</span> <span class="n">on</span>
+</pre></div>
+</div>
+<p>There is, however, a caveat that has already been noted in the previous
+section. More about it can be found in the <a class="reference external" href="https://github.com/fricas/fricas/blob/master/FAQ">FriCAS FAQ</a>, FAQ 35. Do not
+be confused by the name <code class="docutils literal"><span class="pre">.axiom.input</span></code>, this was the former name of
+<code class="docutils literal"><span class="pre">.fricas.input</span></code>. Actually, it is still admissible if the latter does not
+exist.</p>
+</div>
+<div class="section" id="lisp">
+<h2>5.2 )lisp ...<a class="headerlink" href="#lisp" title="Permalink to this headline">¶</a></h2>
+<p>Of course, one always may use the system commands <code class="docutils literal"><span class="pre">)lisp</span></code> or <code class="docutils literal"><span class="pre">)fin</span></code>
+to call the Quicklisp functions directly. Note, however, that you
+must call the <code class="docutils literal"><span class="pre">setup</span></code> function before calling any Quicklisp
+function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">)</span><span class="n">lisp</span> <span class="p">(</span><span class="n">load</span> <span class="s2">&quot;~/quicklisp/setup&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we can call any Quicklisp function as described <a class="reference external" href="https://www.quicklisp.org/beta/#basic-commands">here</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Alternatives</a><ul>
+<li><a class="reference internal" href="#quickload-in-startup-file">5.1 quickLoad in startup file</a></li>
+<li><a class="reference internal" href="#lisp">5.2 )lisp ...</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="section-4.html"
+                        title="previous chapter">4. SPAD Packages</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="appendix-1.html"
+                        title="next chapter">A.1 Sample Installation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/section-5.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="appendix-1.html" title="A.1 Sample Installation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="section-4.html" title="4. SPAD Packages"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">FriCAS &amp; QuickLisp 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

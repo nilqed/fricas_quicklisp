@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4. SPAD Packages &#8212; FriCAS &amp; QuickLisp 1.0.0 documentation</title>
+    <title>4. SPAD Packages &mdash; FriCAS &amp; QuickLisp 1.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="FriCAS &amp; QuickLisp 1.0.0 documentation" href="index.html" />
-    <link rel="next" title="A.1 Sample Installation" href="appendix-1.html" />
+    <link rel="next" title="5. Alternatives" href="section-5.html" />
     <link rel="prev" title="3. Local Projects" href="section-3.html" /> 
   </head>
   <body role="document">
@@ -36,12 +36,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="appendix-1.html" title="A.1 Sample Installation"
+          <a href="section-5.html" title="5. Alternatives"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="section-3.html" title="3. Local Projects"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">FriCAS &amp; QuickLisp 1.0.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">FriCAS &amp; QuickLisp 1.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -109,38 +109,45 @@ to do the job.</p>
 </div>
 <div class="section" id="the-lisp-file">
 <h2>4.2 The Lisp File<a class="headerlink" href="#the-lisp-file" title="Permalink to this headline">¶</a></h2>
-<p>The mandatory file <code class="docutils literal"><span class="pre">src/my-project.lisp</span></code> has the following minimal structure:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">defparameter</span> <span class="o">*</span><span class="n">myproject</span><span class="o">*</span> <span class="p">(</span><span class="n">asdf</span><span class="p">:</span><span class="n">system</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">directory</span> <span class="p">:</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="p">))</span>
+<p>The mandatory file <code class="docutils literal"><span class="pre">src/my-project.lisp</span></code> should have following minimal structure:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">defparameter</span> <span class="o">+</span><span class="n">spad</span><span class="o">-</span><span class="n">project</span><span class="o">+</span> <span class="p">(</span><span class="n">asdf</span><span class="p">:</span><span class="n">system</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">directory</span> <span class="p">:</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="p">))</span>
+<span class="p">(</span><span class="n">defparameter</span> <span class="o">+</span><span class="n">spad</span><span class="o">-</span><span class="n">filebase</span><span class="o">+</span> <span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
 
-<span class="p">(</span><span class="n">defun</span> <span class="nb">compile</span><span class="o">-</span><span class="n">my</span><span class="o">-</span><span class="n">project</span> <span class="p">()</span>
+
+<span class="p">(</span><span class="n">defun</span> <span class="nb">compile</span><span class="o">-</span><span class="n">spad</span><span class="o">-</span><span class="n">project</span> <span class="p">(</span><span class="n">p</span> <span class="n">f</span><span class="p">)</span>
   <span class="p">(</span><span class="n">progn</span>
-    <span class="p">(</span><span class="o">|</span><span class="n">doSystemCommand</span><span class="o">|</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;cd ~Alib&quot;</span> <span class="o">*</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">*</span><span class="p">))</span>
-    <span class="p">(</span><span class="o">|</span><span class="n">doSystemCommand</span><span class="o">|</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;compile ../src/my-project.spad )quiet&quot;</span><span class="p">))))</span>
+    <span class="p">(</span><span class="o">|</span><span class="n">doSystemCommand</span><span class="o">|</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;cd ~Alib&quot;</span> <span class="n">p</span><span class="p">))</span>
+    <span class="p">(</span><span class="o">|</span><span class="n">doSystemCommand</span><span class="o">|</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;compile ../src/~A.spad )quiet&quot;</span> <span class="n">f</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="n">defun</span> <span class="n">load</span><span class="o">-</span><span class="n">my</span><span class="o">-</span><span class="n">project</span> <span class="p">()</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">probe</span><span class="o">-</span><span class="n">file</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;~Alib/MY-PROJECT.NRLIB/MY-PROJECT.lsp&quot;</span> <span class="o">*</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">*</span><span class="p">))</span>
-     <span class="p">(</span><span class="o">|</span><span class="n">doSystemCommand</span><span class="o">|</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;lib )dir ~Alib/&quot;</span> <span class="o">*</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">*</span><span class="p">))</span>
-     <span class="p">(</span><span class="nb">compile</span><span class="o">-</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="p">)))</span>
+<span class="p">(</span><span class="n">defun</span> <span class="n">load</span><span class="o">-</span><span class="n">spad</span><span class="o">-</span><span class="n">project</span> <span class="p">(</span><span class="n">p</span> <span class="n">f</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">let</span> <span class="p">((</span><span class="n">uf</span> <span class="p">(</span><span class="n">string</span><span class="o">-</span><span class="n">upcase</span> <span class="n">f</span><span class="p">))</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">probe</span><span class="o">-</span><span class="n">file</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;~Alib/~A.NRLIB/~A.lsp&quot;</span> <span class="n">p</span> <span class="n">uf</span> <span class="n">uf</span><span class="p">))</span>
+       <span class="p">(</span><span class="o">|</span><span class="n">doSystemCommand</span><span class="o">|</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;lib )dir ~Alib/&quot;</span> <span class="n">p</span><span class="p">))</span>
+       <span class="p">(</span><span class="nb">compile</span><span class="o">-</span><span class="n">spad</span><span class="o">-</span><span class="n">project</span> <span class="n">p</span> <span class="n">f</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="n">defun</span> <span class="o">|</span><span class="n">testMYPROJ</span><span class="o">|</span> <span class="p">()</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">probe</span><span class="o">-</span><span class="n">file</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;~Atest/test_my_project.input&quot;</span> <span class="o">*</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">*</span><span class="p">))</span>
-     <span class="p">(</span><span class="o">|</span><span class="n">doSystemCommand</span><span class="o">|</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;read ~Atest/test_my_project )quiet&quot;</span> <span class="o">*</span><span class="n">project</span><span class="o">*</span><span class="p">))</span>
+<span class="p">(</span><span class="n">defun</span> <span class="n">test</span><span class="o">-</span><span class="n">spad</span><span class="o">-</span><span class="n">project</span> <span class="p">(</span><span class="n">p</span> <span class="n">f</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">probe</span><span class="o">-</span><span class="n">file</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;~Atest/~A.input&quot;</span> <span class="n">p</span> <span class="n">f</span><span class="p">))</span>
+     <span class="p">(</span><span class="o">|</span><span class="n">doSystemCommand</span><span class="o">|</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;read ~Atest/~A )quiet&quot;</span> <span class="n">p</span> <span class="n">f</span><span class="p">))</span>
      <span class="p">(</span><span class="nb">print</span> <span class="s2">&quot;Test file not found ...&quot;</span><span class="p">)))</span>
 
 
-<span class="p">(</span><span class="n">catch</span> <span class="s1">&#39;spad_reader (load-my-project))</span>
+<span class="p">(</span><span class="n">catch</span> <span class="s1">&#39;spad_reader (load-spad-project +spad-project+ +spad-filebase+))</span>
 </pre></div>
 </div>
 <p>This file has to be in a place which is set in the ASDF file and is required by
 FriCAS to do the various tasks.</p>
-<p>The function <code class="docutils literal"><span class="pre">|testMYPROJ|</span></code>
-is optional. If used then <code class="docutils literal"><span class="pre">MYPROJ</span></code> usually is replaced by the
-abbreviation of the domain or package given in the SPAD file. There
-can be added other functions of course, whatever is necessary.</p>
-<p>The meaning of the functions <code class="docutils literal"><span class="pre">compile/load</span> <span class="pre">...</span></code> is obvious.</p>
+<p>A function <code class="docutils literal"><span class="pre">|testMYPROJ|</span></code> could be added (optional), where <code class="docutils literal"><span class="pre">MYPROJ</span></code>
+is replaced by the abbreviation of the domain or package given in the SPAD
+file, so the user would be able to call the test function by:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>testMYPROJ()$Lisp
+</pre></div>
+</div>
+<p>Other functions can be added of course, whatever is necessary.
+The meaning of the functions <code class="docutils literal"><span class="pre">compile/load</span> <span class="pre">...</span></code> should be obvious.</p>
 <p><strong>NOTE</strong></p>
 <p>If you want to use the above code snippet as a template then you have to replace
-each occurence of <code class="docutils literal"><span class="pre">my-project</span></code> by the actual project name.</p>
+<code class="docutils literal"><span class="pre">my-project</span></code> by the actual value. If you like another
+directory structure then you will have to change this in the function bodies.</p>
 </div>
 <div class="section" id="examples">
 <h2>4.3 Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -174,8 +181,8 @@ each occurence of <code class="docutils literal"><span class="pre">my-project</s
   <p class="topless"><a href="section-3.html"
                         title="previous chapter">3. Local Projects</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="appendix-1.html"
-                        title="next chapter">A.1 Sample Installation</a></p>
+  <p class="topless"><a href="section-5.html"
+                        title="next chapter">5. Alternatives</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -186,8 +193,8 @@ each occurence of <code class="docutils literal"><span class="pre">my-project</s
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -204,17 +211,17 @@ each occurence of <code class="docutils literal"><span class="pre">my-project</s
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="appendix-1.html" title="A.1 Sample Installation"
+          <a href="section-5.html" title="5. Alternatives"
              >next</a> |</li>
         <li class="right" >
           <a href="section-3.html" title="3. Local Projects"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">FriCAS &amp; QuickLisp 1.0.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">FriCAS &amp; QuickLisp 1.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2016, Kurt Pagani &lt;nilqed@gmail.com&gt;.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &copy; Copyright 2016, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
     </div>
   </body>
 </html>

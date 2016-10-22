@@ -60,7 +60,7 @@ to do the job.
 
 4.2 The Lisp File
 ~~~~~~~~~~~~~~~~~
-The mandatory file ``src/my-project.lisp`` has the following minimal structure::
+The mandatory file ``src/my-project.lisp`` should have following minimal structure::
 
   (defparameter +spad-project+ (asdf:system-source-directory :my-project))
   (defparameter +spad-filebase+ "my-project")
@@ -90,17 +90,21 @@ The mandatory file ``src/my-project.lisp`` has the following minimal structure::
 This file has to be in a place which is set in the ASDF file and is required by 
 FriCAS to do the various tasks.
 
-A function ``|testMYPROJ|`` should added (optional), where ``MYPROJ`` usually 
+A function ``|testMYPROJ|`` could be added (optional), where ``MYPROJ`` 
 is replaced by the abbreviation of the domain or package given in the SPAD 
-file. Other functions can be added of course, whatever is necessary.
+file, so the user would be able to call the test function by::
 
-The meaning of the functions ``compile/load ...`` is obvious.
+  testMYPROJ()$Lisp
+ 
+Other functions can be added of course, whatever is necessary.
+The meaning of the functions ``compile/load ...`` should be obvious.
+
 
 **NOTE**
 
 If you want to use the above code snippet as a template then you have to replace
-``my-project`` by the actual values in the two parameters. If you want another
-directory structure then you will have to change this in the code above.
+``my-project`` by the actual value. If you like another
+directory structure then you will have to change this in the function bodies.
 
 
 4.3 Examples
@@ -114,8 +118,6 @@ directory structure then you will have to change this in the code above.
 .. _DifferentialForms: https://github.com/nilqed/dform
 .. _Automated Theorem Prover: https://github.com/nilqed/fricas_snark
 .. _Webserver in FriCAS: https://github.com/nilqed/webSPAD
-
-
 
 
 

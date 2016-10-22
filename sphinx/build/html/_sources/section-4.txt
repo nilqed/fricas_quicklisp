@@ -60,44 +60,51 @@ to do the job.
 
 4.2 The Lisp File
 ~~~~~~~~~~~~~~~~~
-The mandatory file ``src/my-project.lisp`` has the following minimal structure::
+The mandatory file ``src/my-project.lisp`` should have following minimal structure::
 
-  (defparameter *myproject* (asdf:system-source-directory :my-project))
+  (defparameter +spad-project+ (asdf:system-source-directory :my-project))
+  (defparameter +spad-filebase+ "my-project")
+  
 
-  (defun compile-my-project ()
+  (defun compile-spad-project (p f)
     (progn
-      (|doSystemCommand| (format nil "cd ~Alib" *my-project*))
-      (|doSystemCommand| (format nil "compile ../src/my-project.spad )quiet"))))
+      (|doSystemCommand| (format nil "cd ~Alib" p))
+      (|doSystemCommand| (format nil "compile ../src/~A.spad )quiet" f))))
 
-  (defun load-my-project ()
-    (if (probe-file (format nil "~Alib/MY-PROJECT.NRLIB/MY-PROJECT.lsp" *my-project*))
-       (|doSystemCommand| (format nil "lib )dir ~Alib/" *my-project*))
-       (compile-my-project)))
+  (defun load-spad-project (p f)
+    (let ((uf (string-upcase f))
+      (if (probe-file (format nil "~Alib/~A.NRLIB/~A.lsp" p uf uf))
+         (|doSystemCommand| (format nil "lib )dir ~Alib/" p))
+         (compile-spad-project p f))))
 
-  (defun |testMYPROJ| () 
-    (if (probe-file (format nil "~Atest/test_my_project.input" *my-project*))
-       (|doSystemCommand| (format nil "read ~Atest/test_my_project )quiet" *project*))
+  (defun test-spad-project (p f) 
+    (if (probe-file (format nil "~Atest/~A.input" p f))
+       (|doSystemCommand| (format nil "read ~Atest/~A )quiet" p f))
        (print "Test file not found ...")))   
    
 
-  (catch 'spad_reader (load-my-project))
+  (catch 'spad_reader (load-spad-project +spad-project+ +spad-filebase+))
 
 
 
 This file has to be in a place which is set in the ASDF file and is required by 
 FriCAS to do the various tasks.
 
-The function ``|testMYPROJ|``
-is optional. If used then ``MYPROJ`` usually is replaced by the
-abbreviation of the domain or package given in the SPAD file. There
-can be added other functions of course, whatever is necessary.
+A function ``|testMYPROJ|`` could be added (optional), where ``MYPROJ`` 
+is replaced by the abbreviation of the domain or package given in the SPAD 
+file, so the user would be able to call the test function by::
 
-The meaning of the functions ``compile/load ...`` is obvious.
+  testMYPROJ()$Lisp
+ 
+Other functions can be added of course, whatever is necessary.
+The meaning of the functions ``compile/load ...`` should be obvious.
+
 
 **NOTE**
 
 If you want to use the above code snippet as a template then you have to replace
-each occurence of ``my-project`` by the actual project name.
+``my-project`` by the actual value. If you like another
+directory structure then you will have to change this in the function bodies.
 
 
 4.3 Examples
@@ -111,8 +118,6 @@ each occurence of ``my-project`` by the actual project name.
 .. _DifferentialForms: https://github.com/nilqed/dform
 .. _Automated Theorem Prover: https://github.com/nilqed/fricas_snark
 .. _Webserver in FriCAS: https://github.com/nilqed/webSPAD
-
-
 
 
 
