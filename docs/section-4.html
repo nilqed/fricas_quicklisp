@@ -70,19 +70,19 @@ by the command <code class="docutils literal"><span class="pre">quickLoad</span>
 compiled if necessary and/or loaded into FricAS.</p>
 <p>The general structure of your project (let&#8217;s call it <em>my-project</em>)
 might look like:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">my</span><span class="o">-</span><span class="n">project</span>
-<span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">.</span><span class="n">asd</span>
-<span class="n">LICENSE</span>
-<span class="n">README</span>
-<span class="o">--</span> <span class="n">src</span>
-    <span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">.</span><span class="n">spad</span>
-    <span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">.</span><span class="n">lisp</span>
-<span class="o">--</span> <span class="n">lib</span>
-<span class="o">--</span> <span class="n">test</span>
-<span class="o">--</span> <span class="n">sphinx</span>
-<span class="o">---</span> <span class="n">source</span>
-<span class="o">---</span> <span class="n">build</span>
-<span class="o">--</span> <span class="n">docs</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="k">for</span> <span class="n">gh</span><span class="o">-</span><span class="n">pages</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>- my-project
+my-project.asd
+LICENSE
+README
+-- src
+    my-project.spad
+    my-project.lisp
+-- lib [mandatory!]
+-- test
+-- sphinx
+--- source
+--- build
+-- docs (e.g. for gh-pages)
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">my-project.xyz</span></code> files may have other names than that of the project,
@@ -120,7 +120,7 @@ to do the job.</p>
     <span class="p">(</span><span class="o">|</span><span class="n">doSystemCommand</span><span class="o">|</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;compile ../src/~A.spad )quiet&quot;</span> <span class="n">f</span><span class="p">))))</span>
 
 <span class="p">(</span><span class="n">defun</span> <span class="n">load</span><span class="o">-</span><span class="n">spad</span><span class="o">-</span><span class="n">project</span> <span class="p">(</span><span class="n">p</span> <span class="n">f</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">let</span> <span class="p">((</span><span class="n">uf</span> <span class="p">(</span><span class="n">string</span><span class="o">-</span><span class="n">upcase</span> <span class="n">f</span><span class="p">))</span>
+  <span class="p">(</span><span class="n">let</span> <span class="p">((</span><span class="n">uf</span> <span class="p">(</span><span class="n">string</span><span class="o">-</span><span class="n">upcase</span> <span class="n">f</span><span class="p">)))</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">probe</span><span class="o">-</span><span class="n">file</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;~Alib/~A.NRLIB/~A.lsp&quot;</span> <span class="n">p</span> <span class="n">uf</span> <span class="n">uf</span><span class="p">))</span>
        <span class="p">(</span><span class="o">|</span><span class="n">doSystemCommand</span><span class="o">|</span> <span class="p">(</span><span class="nb">format</span> <span class="n">nil</span> <span class="s2">&quot;lib )dir ~Alib/&quot;</span> <span class="n">p</span><span class="p">))</span>
        <span class="p">(</span><span class="nb">compile</span><span class="o">-</span><span class="n">spad</span><span class="o">-</span><span class="n">project</span> <span class="n">p</span> <span class="n">f</span><span class="p">))))</span>

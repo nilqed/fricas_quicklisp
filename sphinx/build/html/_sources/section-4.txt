@@ -28,7 +28,7 @@ might look like::
    -- src
        my-project.spad
        my-project.lisp
-   -- lib
+   -- lib [mandatory!]
    -- test
    -- sphinx
    --- source
@@ -72,7 +72,7 @@ The mandatory file ``src/my-project.lisp`` should have following minimal structu
       (|doSystemCommand| (format nil "compile ../src/~A.spad )quiet" f))))
 
   (defun load-spad-project (p f)
-    (let ((uf (string-upcase f))
+    (let ((uf (string-upcase f)))
       (if (probe-file (format nil "~Alib/~A.NRLIB/~A.lsp" p uf uf))
          (|doSystemCommand| (format nil "lib )dir ~Alib/" p))
          (compile-spad-project p f))))

@@ -34,7 +34,7 @@ on Linux, Mac OS X, and Windows.
 .. _FriCAS: http://fricas.sourceforge.net/
 
 1.1 Installing a LISP
---------------------
+---------------------
 Download and install one of the implementations according to the instructions
 given on the respective website or in the `README|INSTALL` files within the
 distribution package. For SBCL there is a log of a sample installation in the
@@ -42,7 +42,7 @@ appendix.
 
 
 1.2 Getting and Compiling FriCAS
--------------------------------
+--------------------------------
 Get the latest (stable) `source tarball`_ from sourceforge. Do **not** take one
 of the binaries - it won't work together with QuickLisp.
 
@@ -68,7 +68,7 @@ Possibly the development branch will also work but there is no guarantee.
 
 
 1.3 Installing QuickLisp
------------------------
+------------------------
 Follow the instructions given on the QuickLisp `homepage`_. See also the
 *sample installation* section in the appendix.
 
@@ -85,7 +85,7 @@ Check if there is a folder **quicklisp** in your home directory.
 
 
 1.3.1 Manually loading after installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You only need to install Quicklisp with ``quicklisp.lisp`` once. To load 
 Quicklisp into your FriCAS session after the initial installation, load the 
@@ -94,7 +94,7 @@ file ``quicklisp/setup.lisp`` with the Common Lisp load function::
     )lisp (load "~/quicklisp/setup.lisp")
     
 1.3.2 Test if it works
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 With the commad ``system-apropos`` we can lookup for online packages::
     
